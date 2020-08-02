@@ -35,14 +35,14 @@
                     "// 2015 CloudFronts Technologies Pvt. Ltd, All Rights Reserved. ",
                     "// </copyright>", 
                     "// File Name: ${filename}", 
-                    "// Description:  " ,
+                    "// Description:  ${description}" ,
                     "// Created: ${monthText} ${day}, ${year}", 
                     "// Author: ${userName}, CloudFronts Technologies Pvt. Ltd. ",
                     "// Revisions:", 
                     "// ===================================================================================",
                     "// VERSION         DATE            Modified By         DESCRIPTION",  
                     "// -----------------------------------------------------------------------------------",
-                    "// 1.0          ${day}/${month}/${year}      ${userName}          CREATED ",
+                    "// 1.0            ${day}/${month}/${year}      ${userName}          CREATED ",
                     "// ==================================================================================="
                     ]
                 },
@@ -54,15 +54,41 @@
                         "Table Extension" : "EXT",
                         "Card Page" : "CARD",
                         "List Page" : "LIST",
+                        "API" : "API",
+                        "Rolecenter" : "ROLECENTER",
                         "Card Part Page" : "CARDPART",
                         "List Part Page": "LISTPART",
-                        "Page Extension" : "EXT",
+                        "List Page Extension" : "LIST_EXT",
+                        "Card Page Extension" : "CARD_EXT",
                         "Report" : "REPORT",
                         "Codeunit" : "CODEUNIT",
                         "XML Port": "XMLPORT",
                         "Query" : "QUERY"
                     }
+                },
+
+                "descriptionTemplates" : {
+                    "type": "object",
+                    "title": "Description Templates",
+                    "default" : {
+                        "Table" : "Creating a new table ${name}",
+                        "Table Extension": "Adding fields to the table ${name}",
+                        "Card Page" : "Creating a card page for the table ${name}",
+                        "List Page" : "Creating a list page for the table ${name}",
+                        "API": "Creating an API Page for the table ${name}",
+                        "Rolecenter" : "Creating a role center for ${name}",
+                        "List Page Part" : "Creating a list part for page ${name}",
+                        "Card Page Part" : "Creating a card page part for page ${name}",
+                        "List Page Extension" : "Adding fields to the list page ${name}",
+                        "Card Page Extension" : "Adding fields to the card page ${name}",
+                        "Report" : "Creating a new report ${name}",
+                        "Codeunit" : "Creating a new codeunit ${name}",
+                        "XML Port" : "Creating a new XML Port ${name}",
+                        "Query" : "Creating a new Query ${name}"
+                    }
                 }
+
+            
             }
         }
     },

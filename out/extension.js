@@ -32,6 +32,7 @@ function activate(context) {
                 return;
             }
             const objects = vscode.workspace.getConfiguration().get("objectTypes") || {};
+            const descriptionTemplates = vscode.workspace.getConfiguration().get("descriptionTemplates") || {};
             const fileType = await vscode.window.showQuickPick(Object.keys(objects), {
                 canPickMany: false,
                 placeHolder: 'Please select the page type.'
@@ -42,7 +43,8 @@ function activate(context) {
             }
             if (fileID && fileType && fileName) {
                 const fileTitle = `CFS_${fileName === null || fileName === void 0 ? void 0 : fileName.toUpperCase()}-${objects[fileType]}-${fileID}`;
-                fs.writeFile(folder + `\\${fileTitle}.al`, getHeader(fileTitle, `${userName}`), (_) => console.log('Done with file.'));
+                const description = descriptionTemplates[fileType];
+                fs.writeFile(folder + `\\${fileTitle}.al`, getHeader(fileTitle, `${userName}`, description.replace(/\$\{name\}/g, fileName)), (_) => console.log('Done with file.'));
             }
         }
         else {
@@ -82,7 +84,7 @@ function getMonthText(no) {
             return '';
     }
 }
-function getHeader(filename, userName) {
+function getHeader(filename, userName, description) {
     const now = new Date();
     const month = now.getMonth() < 10 ? `0${now.getMonth()}` : `${now.getMonth()}`;
     const day = now.getDate() < 10 ? `0${now.getDate()}` : `${now.getDate()}`;
@@ -96,6 +98,7 @@ function getHeader(filename, userName) {
         template = template.replace(/\$\{monthText\}/g, getMonthText(now.getMonth()));
         template = template.replace(/\$\{year\}/g, `${now.getFullYear()}`);
         template = template.replace(/\$\{userName\}/g, userName);
+        template = template.replace(/\$\{description\}/g, description);
         return template;
     }
     return '';
