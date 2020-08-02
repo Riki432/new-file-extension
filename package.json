@@ -1,0 +1,83 @@
+{
+    "name": "newfile",
+    "displayName": "New File",
+    "description": "Creates a new file with appropriate header.",
+    "version": "0.0.1",
+    "publisher": "Cloudfronts",
+    "engines": {
+        "vscode": "^1.32.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:extension.newfile"
+    ],
+    "main": "./out/extension",
+    "contributes": {
+        "commands": [
+            {
+                "command": "extension.newfile",
+                "title": "Cloudfronts: New File"
+            }
+        ],
+        "configuration" : {
+            "title": "Cloudfronts",
+            "properties": {
+                "headerText" : {
+                    "type" : "array",
+                    "title": "Header Text",
+                    "default" : [
+                    "// <copyright file=\"${filename}\" company=\"CloudFronts Technologies Pvt. Ltd.\">",
+                    "// 2015 CloudFronts Technologies Pvt. Ltd, All Rights Reserved. ",
+                    "// </copyright>", 
+                    "// File Name: ${filename}", 
+                    "// Description:  " ,
+                    "// Created: ${monthText} ${day}, ${year}", 
+                    "// Author: ${userName}, CloudFronts Technologies Pvt. Ltd. ",
+                    "// Revisions:", 
+                    "// ===================================================================================",
+                    "// VERSION         DATE            Modified By         DESCRIPTION",  
+                    "// -----------------------------------------------------------------------------------",
+                    "// 1.0          ${day}/${month}/${year}      ${userName}          CREATED ",
+                    "// ==================================================================================="
+                    ]
+                },
+                "objectTypes" : {
+                    "type" : "object",
+                    "title": "Objects",
+                    "default" : {
+                        "Table" : "TABLE",
+                        "Table Extension" : "EXT",
+                        "Card Page" : "CARD",
+                        "List Page" : "LIST",
+                        "Card Part Page" : "CARDPART",
+                        "List Part Page": "LISTPART",
+                        "Page Extension" : "EXT",
+                        "Report" : "REPORT",
+                        "Codeunit" : "CODEUNIT",
+                        "XML Port": "XMLPORT",
+                        "Query" : "QUERY"
+                    }
+                }
+            }
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "lint": "eslint . --ext .ts,.tsx",
+        "watch": "tsc -watch -p ./"
+    },
+    "devDependencies": {
+        "@types/node": "^12.12.0",
+        "@typescript-eslint/eslint-plugin": "^3.0.2",
+        "@typescript-eslint/parser": "^3.0.2",
+        "eslint": "^7.1.0",
+        "typescript": "^3.9.4",
+        "@types/vscode": "^1.32.0"
+    },
+    "dependencies": {
+        "fs": "0.0.1-security"
+    }
+}
