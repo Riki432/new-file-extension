@@ -4,6 +4,9 @@
     "description": "Creates a new file with appropriate header.",
     "version": "0.0.1",
     "publisher": "Cloudfronts",
+    "repository": {
+        "url": "https://github.com/Riki432/new-file-extension.git"
+    },
     "engines": {
         "vscode": "^1.32.0"
     },
