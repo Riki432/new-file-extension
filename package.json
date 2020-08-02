@@ -27,6 +27,11 @@
         "configuration" : {
             "title": "Cloudfronts",
             "properties": {
+                "userName" : {
+                    "type" : "string",
+                    "title": "User Name",
+                    "default": null
+                },
                 "headerText" : {
                     "type" : "array",
                     "title": "Header Text",

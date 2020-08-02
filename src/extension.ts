@@ -13,14 +13,14 @@ export function activate(context: vscode.ExtensionContext) {
 		if(vscode.workspace.workspaceFolders){
 			const folder = vscode.workspace.workspaceFolders[0].uri.fsPath!;
 
-			let userName = context.globalState.get("userName");
+			let userName = vscode.workspace.getConfiguration().get('userName');
 
 			if(!userName){
 				userName = await vscode.window.showInputBox({
 					placeHolder : "Please enter your full name."
 				});
 				if(userName)
-					context.globalState.update('userName', userName);
+					vscode.workspace.getConfiguration().update('userName', userName);
 			}
 
 			const fileID = await vscode.window.showInputBox({
