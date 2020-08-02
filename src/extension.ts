@@ -32,7 +32,7 @@ export function activate(context: vscode.ExtensionContext) {
 				return;
 			} 
 
-			const fileName = await vscode.window.showInputBox({
+			let fileName = await vscode.window.showInputBox({
 				placeHolder : 'Please enter the name of the file.'
 			});
 			
@@ -40,6 +40,8 @@ export function activate(context: vscode.ExtensionContext) {
 				window.showInformationMessage('No filename selected'); 
 				return;
 			}
+
+			fileName = fileName.split(" ").join('');
 			
 			const objects : Record<string, string> = vscode.workspace.getConfiguration().get("objectTypes") || {};
 			const descriptionTemplates : Record<string, string> = vscode.workspace.getConfiguration().get("descriptionTemplates") || {};

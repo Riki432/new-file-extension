@@ -24,13 +24,14 @@ function activate(context) {
                 window.showInformationMessage('No file ID given.');
                 return;
             }
-            const fileName = await vscode.window.showInputBox({
+            let fileName = await vscode.window.showInputBox({
                 placeHolder: 'Please enter the name of the file.'
             });
             if (!fileName) {
                 window.showInformationMessage('No filename selected');
                 return;
             }
+            fileName = fileName.split(" ").join('');
             const objects = vscode.workspace.getConfiguration().get("objectTypes") || {};
             const descriptionTemplates = vscode.workspace.getConfiguration().get("descriptionTemplates") || {};
             const fileType = await vscode.window.showQuickPick(Object.keys(objects), {
